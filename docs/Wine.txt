@@ -1,0 +1,26 @@
+Wine
+
+
+
+https://wiki.debian.org/fr/Wine
+https://wiki.winehq.org/Debian
+https://wiki.winehq.org/Mono
+
+https://www.techperiod.com/install-windows-exe-files-linux/
+
+https://www.reddit.com/r/wine_gaming/comments/8r6low/guide_how_to_install_net_45_on_64bit_prefixes/
+
+
+#to install sketchup
+https://www.scivision.dev/using-sketchup-in-linux-wine/
+
+/home/philippe/.wine_sketchup/drive_c/Program Files/Common Files
+
+
+
+alternative
+
+https://heiko-sieger.info/creating-a-windows-10-virtual-machine-using-the-virtual-machine-manager-virt-manager/
+https://heiko-sieger.info/running-windows-10-on-linux-using-kvm-with-vga-passthrough/
+
+

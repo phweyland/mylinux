@@ -1,0 +1,158 @@
+# init new git
+$ git init
+$ git status
+..
+$ add .
+$ git commit -m "initial ..."
+
+# Set a new remote (doesn't create really the remote respository, just the local reference)
+$ git remote add origin https://github.com/user/repo.git
+
+# Verify new remote
+$ git remote -v
+origin  https://github.com/user/repo.git (fetch)
+origin  https://github.com/user/repo.git (push)
+
+# list remote branches
+$ git ls-remote
+$ git ls-remote –heads <remote_name>
+
+# clone
+$ git clone <url>
+
+# checkout a local branch
+$ git checkout color-grading
+
+#to synchronize with upstream master
+
+$ git remote -v
+origin  https://github.com/phweyland/darktable.git (fetch)
+origin  https://github.com/phweyland/darktable.git (push)
+
+$ git remote add upstream https://github.com/darktable-org/darktable.git
+
+$ git remote -v
+origin  https://github.com/phweyland/darktable.git (fetch)
+origin  https://github.com/phweyland/darktable.git (push)
+upstream        https://github.com/darktable-org/darktable.git (fetch)
+upstream        https://github.com/darktable-org/darktable.git (push)
+
+# Fetch the branches and their respective commits from the upstream repository. # Commits to master will be stored in a local branch, upstream/master.
+$ git fetch upstream
+remote: Counting objects: 19, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 19 (delta 15), reused 18 (delta 15), pack-reused 1
+Unpacking objects: 100% (19/19), done.
+From https://github.com/darktable-org/darktable
+   5ee08d2ea..51f16af65  master     -> upstream/master
+
+# Check out your fork's local master branch.
+$ git checkout master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+
+# Merge the changes from upstream/master into your local master branch.
+$ git merge upstream/master
+Merge made by the 'recursive' strategy.
+ data/noiseprofiles.json | 12 ++++++++++++
+ src/gui/draw.h          | 14 +++++++-------
+ src/iop/levels.c        |  2 +-
+ src/iop/tonecurve.c     |  2 +-
+ src/libs/histogram.c    |  6 +++---
+ src/lua/preferences.c   |  2 +-
+ 6 files changed, 25 insertions(+), 13 deletions(-)
+
+# or instead of merging
+$ git rebase upstream/master
+
+#then a local branch can be rebased on master
+$ git checkout <local branch>
+$ git rebase master
+
+#to reset a merge
+git reset -–merge
+
+# reset a rebase
+git rebase -–abort
+
+# Create a new local branch
+$ git checkout -b <branch>
+
+# Push the local branch to remote
+$ git push -u origin <branch>		#first time ?
+$ git push origin <branch>
+
+# to exit from commit edit :
+:wq
+
+# to commit with automatic stage
+$ git commit -a -m «message»
+
+#to fetch (and follow) a remote branch
+$ git checkout --track origin/daves_branch
+
+
+# défaire tous les changements dans une branche
+$ git checkout -f
+
+# retirer tous les nouveaux fichiers / répertoires
+$ git clean -df
+
+# to revert to a certain commit
+$ git checkout <commit number>
+
+# To delete a local branch
+$ git branch -d the_local_branch
+
+# To remove a remote branch (if you know what you are doing!)
+$ git push origin :the_remote_branch
+
+# or simply use the new syntax (v1.7.0)
+$ git push origin --delete the_remote_branch
+
+# to rename a branch
+$ git branch -m tc-LCh2 tc-LCh2-old
+
+
+# from turbogit
+##########
+#Rebase --interactive
+$ git commit --amend
+#(to commit the staged rawspeed revert)
+#And then:
+$ git reset --hard
+#(to discard the wrong rawspeed)
+#And then:
+$ git rebase –continue
+
+#To resolve conflict:
+
+$ git checkout land:tc-LCh2
+$ git fetch
+$ git rebase origin/master
+
+#Then, look at the code and resolve the conflict line by editing the #corresponding files.
+
+$ git add <fixed files>
+$ git rebase –continue
+
+
+#And if all is fine, force push here:
+$ git push -f origin land:tc-LCh2
+###########
+
+#remove a file from followed files
+$git rm <file to be removed>
+
+#list files included in a commit
+git ls-tree --name-only -r <commit>
+git ls-tree --full-tree -r HEAD
+
+git remote add -t remote-branch remote-name remote-url
+undo changes on branch
+git checkout –- <file>
+
+
+
+#create a patch
+$ git format-patch master --stdout > 0001-gmic-2.6.4-windows-build.patch

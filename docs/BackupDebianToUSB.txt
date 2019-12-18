@@ -1,0 +1,54 @@
+Backup on usb drive
+
+gpart => create partition on drive
+
+
+
+
+#rsync => copy files
+#see https://wiki.archlinux.org/index.php/Rsync#As_a_backup_utility
+
+with permission
+
+#backup root
+Grsync
+
+-aAXv
+--exclude /dev/*
+--exclude /proc/*
+--exclude /sys/*
+--exclude /tmp/*
+--exclude /run/*
+--exclude /mnt/*
+--exclude /media/*
+--exclude /home
+--exclude /lost+found
+
+exclure aussi usr/share/atom ?
+/cdrom/
+/swapfile
+?
+
+#see also rsync -qaHAXS SOURCE_DIR DESTINATION_DIR
+
+#backup home
+Grsync
+
+-aAXv
+--exclude .cache
+--exclude git
+--exclude Téléchargements
+--exclude .wine
+--exclude lost+found
+
+
+?
+rsync -aPh --del server.example.com:/ /mnt/backup
+
+This really depends on how you are going to restore your system. If you will rebuild then you only need the configuration/data files for your services (eg: /etc, /opt, /var, /home)
+If you are after a full system restore, then it you could omit /proc, /boot & /dev. Then you can install the minimum OS from your boot media and then restore your system via your backup.
+Of course, the best backup is one that has been tested and verified.
+So omit what you don't think you need, try to restore in a VM and verify you can get back your system using this data.
+
+
+https://www.maketecheasier.com/back-up-entire-hard-drive-linux/

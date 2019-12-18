@@ -1,0 +1,37 @@
+HP
+
+cups to add a printer. Works well to connect to HP
+interface web : http://localhost:631/
+
+“printer settings” permet aussi de modifier les settings de l’imprimante
+
+as described here https://alioth-lists.debian.net/pipermail/sane-devel/2009-February/024117.html
+
+with HP Printer (HPLIP) and  hp:/net/photosmart_wireless_b109n-z?ip=192.168.1.11
+
+create the printer:
+
+Description:	photosmart_wireless_b109n-z
+Location:	bureau
+Driver:	HP Photosmart Wireless b109n-z, hpcups 3.18.12 (color)
+Connection:	hp:/net/photosmart_wireless_b109n-z?ip=192.168.1.11
+Defaults:	job-sheets=none, none media=iso_a4_210x297mm sides=one-sided
+
+with that the scanner is automatically recognized by:
+
+scanimage -L
+simple-scan
+xsane
+
+au lieu de:
+simple-scan hpaio:/net/photosmart_wireless_b109n-z?ip=192.168.1.11
+
+The compatible models are found here:
+[photosmart_wireless_b109n-z] from /usr/share/hplip/data/models/models.dat
+
+
+#to scan the network
+nmap -sn 192.168.1.0/24
+
+
+
