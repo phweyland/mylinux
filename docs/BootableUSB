@@ -1,9 +1,58 @@
 
-bootable usb
+bootable usb - 20191219
+
+tools
+free download manager to get images
+isomaster to edit images iso
+multibootusb 9.02 doesn't work. http://multibootusb.org/page_guide/
+multisystem doesn't work neither.
 
 
-free download manager
+multiboot UEFI - the 2 sources which helped me to get there
+https://ubuntuforums.org/showthread.php?t=2276498
+https://debian-facile.org/utilisateurs:abdelqahar:tutos:cle-multibootable-debian
 
+Follow strictly the method given on ubuntuforums.
+With specific grub.cfg for Debian
+
+sudo apt-get install gdisk
+sudo fdisk -l => sdx
+sudo sgdisk --zap-all /dev/sdbx
+sudo sgdisk --new=1:0:0 --typecode=1:ef00 /dev/sdx
+sudo mkfs.vfat -F32 -n GRUB2EFI /dev/sdx1
+sudo mount -t vfat /dev/sdx1 /mnt -o uid=1000,gid=1000,umask=022
+download: http://webativo.com/uploads/files/usb-pack_efi.zip
+cd ~/Downloads/
+unzip usb-pack_efi.zip
+rsync -auv usb-pack_efi/ /mnt
+sudo grub-install --removable --boot-directory=/mnt/boot --efi-directory=/mnt/EFI/BOOT /dev/sdx
+remain some instructions to make the stick work also for partition MSB but not tested here.
+
+Add iso files into /iso/
+Update grub.cfg accordingly
+
+For debian 10 distrib :
+
+menuentry 'Debian 10 Cinnamon' {
+	set isofile="/iso/debian-live-10.2.0-amd64-cinnamon.iso"
+	loopback loop $isofile
+	linux (loop)/live/vmlinuz-4.19.0-6-amd64 boot=live fromiso=/dev/sdc1/$isofile
+	initrd (loop)/live/initrd.img-4.19.0-6-amd64
+}
+menuentry 'Debian 10 install boot=install.amd fromiso=/dev/sdc1/$isofile ' {
+	set isofile="/iso/debian-10.2.0-amd64-DVD-1.iso"
+	loopback loop $isofile
+	linux (loop)/install.amd/vmlinuz boot=install.amd fromiso=/dev/sdc1/$isofile
+	initrd (loop)/install.amd/initrd.gz
+}
+
+
+Other sites:
+https://help.ubuntu.com/community/UEFIBooting
+seems to work only for unbutu (/casper/vmlinuz file missing)
+https://debian-facile.org/viewtopic.php?id=11493
+https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Debian
+https://debian-facile.org/utilisateurs:paskal:tutos:usb-multiboot-iso
+http://www.linuxliveusb.com/
 https://linuxize.com/post/create-bootable-debian-10-usb-stick-on-linux
-
 https://itsfoss.com/multiple-linux-one-usb/
