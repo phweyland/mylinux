@@ -1,11 +1,11 @@
 [default]
 is_set=false
 text_source=/home
-text_dest=/media/philippe/12d53f79-ac15-4158-a389-a838b3c20c90/
+text_dest=/media/philippe/c62bae3a-4c9e-4ba3-b6db-65e24272c4af
 text_notes=
 text_com_before=
 text_com_after=
-text_addit=-aAXv\n--exclude .cache\n--exclude git\n--exclude Téléchargements\n--exclude .wine\n--exclude lost+found\n
+text_addit=-aAXv\n--exclude .cache\n--exclude git\n--exclude Téléchargements\n--exclude .wine*\n--exclude .PlayOnLinux\n--exclude .atom\n--exclude .mozilla\n--exclude lost+found\n--exclude /Trash/\n--exclude .local\n--exclude .thumbnails\n--exclude .nv\n\n
 check_time=false
 check_perm=true
 check_owner=false

@@ -93,6 +93,11 @@ $ git commit -a -m «message»
 #to fetch (and follow) a remote branch
 $ git checkout --track origin/daves_branch
 
+#to refresh remote branches
+$ git remote update origin --prune
+
+#to list remote branches
+$ git branch -a
 
 # défaire tous les changements dans une branche
 $ git checkout -f
@@ -152,9 +157,22 @@ git ls-tree --full-tree -r HEAD
 
 git remote add -t remote-branch remote-name remote-url
 undo changes on branch
-git checkout –- <file>
+git checkout -- <file>
 
 
 
 #create a patch
 $ git format-patch master --stdout > 0001-gmic-2.6.4-windows-build.patch
+
+
+# squash
+$ git branch -m meta-copy meta-copy-crap (not to lose everything)
+$ git fetch origin meta-copy
+$ git checkout meta-copy
+$ git checkout 6bd8790
+$ git checkout -b meta-copy-restart
+$ git checkout master
+$ git branch -D meta-copy
+$ git checkout meta-copy
+$ git merge --squash meta-copy-restart
+$ git commit

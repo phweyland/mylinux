@@ -33,18 +33,21 @@ Update grub.cfg accordingly
 
 For debian 10 distrib :
 
-menuentry 'Debian 10 Cinnamon' {
-	set isofile="/iso/debian-live-10.2.0-amd64-cinnamon.iso"
+menuentry 'GParted amd64' {
+	set isofile="/iso/gparted-live-1.0.0-5-amd64.iso"
 	loopback loop $isofile
-	linux (loop)/live/vmlinuz-4.19.0-6-amd64 boot=live fromiso=/dev/sdc1/$isofile
-	initrd (loop)/live/initrd.img-4.19.0-6-amd64
+    	linux (loop)/live/vmlinuz boot=live union=overlay username=user config components noswap noeject toram=filesystem.squashfs findiso=$isofile
+	initrd (loop)/live/initrd.img
 }
-menuentry 'Debian 10 install boot=install.amd fromiso=/dev/sdc1/$isofile ' {
+menuentry 'Debian 10 install' {
 	set isofile="/iso/debian-10.2.0-amd64-DVD-1.iso"
 	loopback loop $isofile
-	linux (loop)/install.amd/vmlinuz boot=install.amd fromiso=/dev/sdc1/$isofile
-	initrd (loop)/install.amd/initrd.gz
+	linux (loop)/install.amd/vmlinuz
+	initrd '/initrd/initrd-amd64.gz'
 }
+
+## boot on live cd and attach system drives
+https://docs.intuitivetechnology.com/article/92-how-to-mount-linux-filesystem-from-a-live-cd-and-copy-a-backup
 
 
 Other sites:
@@ -56,3 +59,7 @@ https://debian-facile.org/utilisateurs:paskal:tutos:usb-multiboot-iso
 http://www.linuxliveusb.com/
 https://linuxize.com/post/create-bootable-debian-10-usb-stick-on-linux
 https://itsfoss.com/multiple-linux-one-usb/
+https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
+
+https://lecrabeinfo.net/installer-linux-debian-le-guide-complet.html
+https://wiki.debian.org/Simple-CDD

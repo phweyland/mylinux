@@ -1,0 +1,5 @@
+https://wiki.debian.org/InstallingDebianOn/Apple/MacBookPro/9-1
+https://www.upgradeable.com.au/pages/macbook-pro-ssd-upgrade-guide
+
+https://wiki.debian.org/MacBookPro#For_MacBook_Pro_15.22_.288.2C2.29
+https://wiki.debian.org/InstallingDebianOn/Apple/MacBookPro/9-2

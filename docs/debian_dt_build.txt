@@ -1,0 +1,76 @@
+darktable dependencies
+
+https://build.opensuse.org/package/view_file/home:darix:darktable:master/darktable/darktable.dsc?expand=1
+
+Build-Depends: cmake,
+               debhelper (>= 10),
+               intltool,
+               iso-codes,
+               libcairo2-dev,
+               libcolord-dev,
+               libcolord-gtk-dev,
+               libcups2-dev,
+               libcurl4-gnutls-dev | libcurl-dev,
+               libexiv2-dev,
+               libflickcurl-dev,
+               libglib2.0-dev,
+               libgphoto2-dev,
+               libgraphicsmagick1-dev,
+               libgtk-3-dev (>= 3.22),
+               libjpeg-dev,
+               libjson-glib-dev,
+               liblcms2-dev,
+               liblensfun-dev,
+               liblua5.3-dev,
+               libopenexr-dev,
+               libopenjp2-7-dev,
+               libosmgpsmap-1.0-dev,
+               libpng-dev,
+               libpugixml-dev,
+               librsvg2-dev,
+               libsecret-1-dev,
+               libsoup2.4-dev,
+               libsqlite3-dev,
+               libtiff-dev,
+               libwebp-dev,
+               xsltproc
+
+$ sudo apt install cmake debhelper intltool iso-codes libcairo2-dev libcolord-dev libcolord-gtk-dev libcups2-dev libcurl4-gnutls-dev libexiv2-dev libflickcurl-dev libglib2.0-dev libgphoto2-dev libgraphicsmagick1-dev libgtk-3-dev libjpeg-dev libjson-glib-dev liblcms2-dev liblensfun-dev liblua5.3-dev libopenexr-dev libopenjp2-7-dev libosmgpsmap-1.0-dev libpng-dev libpugixml-dev librsvg2-dev libsecret-1-dev libsoup2.4-dev libsqlite3-dev libtiff-dev libwebp-dev xsltproc
+
+$ git submodule init
+$ git submodule update
+
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/darktable ../.
+
+https://redmine.darktable.org/projects/darktable/wiki/Building_darktable_22/8.pdf
+maybe more accurate from build:
+$ ./../build.sh
+
+see also
+https://redmine.darktable.org/projects/darktable/wiki/Building_darktable_20
+
+
+Test open cl
+$ /opt/darktable/bin/darktable -d opencl
+
+See nvidia_driver.txt
+
+
+gmic 2.8.1 debian buster
+https://www.fosshub.com/GMIC.html
+
+
+
+for doc:
+$ sudo apt-get install python3-jsonschema
+$ sudo apt-get install default-jdk gnome-doc-utils libsaxon-java fop imagemagick docbook-xml docbook-xsl
+
+then in build:
+$ make darktable-usermanual
+
+for translations:
+$ sudo apt-get install po4a
+
+
+to test CSS
+$ GTK_DEBUG=interactive darktable

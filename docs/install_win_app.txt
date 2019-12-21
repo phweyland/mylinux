@@ -1,0 +1,23 @@
+Installation on Debian
+
+Sketchup
+This video fails for me but gives the main points:
+https://www.youtube.com/watch?v=SpTzOXy07y0
+
+
+How to install in Ubuntu 17.04. use17 steps writen by John Wolter in winehq
+https://appdb.winehq.org/objectManager.php?sClass=version&iId=34500
+
+.Net 4.5.2 downloaded from Microsoft site here
+https://www.microsoft.com/en-us/download/details.aspx?id=42642
+
+Needed dlls downloaded from here. You will need both, the 32-bit and the 64-bit version
+https://www.dll-files.com/mfc140u.dll.html
+
+Extract .msi package from install .exe file. Not sure this is mandatory but doesn't hurt.
+Unlike the video, using the system wine (instead wine 2.1 stage) does work.
+
+Remain to solve:
+- webhelper fails. Not a big deal.
+
+http://ubuntuhandbook.org/index.php/2014/06/install-google-Sketchup-ubuntu1404/

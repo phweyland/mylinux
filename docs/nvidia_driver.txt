@@ -1,0 +1,26 @@
+
+
+https://www.commentcamarche.net/faq/3456-installer-drivers-nvidia-sous-debian
+on modifie /etc/apt/sources.list en ajoutant derrière les occurrences
+du mot clé free les mots-clés contrib et non-free.
+
+$ sudo nano /etc/apt/sources.list
+
+deb http://ftp.fr.debian.org/debian/ testing main contrib non-free
+deb http://security.debian.org/debian-security testing/updates main contrib non-free
+deb http://ftp.fr.debian.org/debian/ testing-updates main contrib non-free
+
+
+Installer les paquets nvidia-driver:
+
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install nvidia-driver
+
+redémarrer ou bien charger le driver nvidia et relancer le mode graphique :
+
+$ sudo modprobe nvidia
+$ sudo service sddm restart
+
+pour activer opencl
+$ sudo apt install nvidia-opencl-dev

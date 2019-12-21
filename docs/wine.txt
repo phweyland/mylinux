@@ -1,0 +1,34 @@
+Wine
+https://wiki.winehq.org/Debian
+https://tecadmin.net/install-wine-on-debian-10-buster/
+
+$ sudo dpkg --add-architecture i386
+$ wget -nc https://dl.winehq.org/wine-builds/winehq.key
+$ sudo apt-key add winehq.key
+
+Better:
+Add this content to /etc/apt/sources.list:
+deb https://dl.winehq.org/wine-builds/debian/ buster main
+
+$ sudo apt update
+$ sudo apt install --install-recommends winehq-stable
+
+$ wine --version
+wine-4.0.1
+
+
+https://wiki.debian.org/fr/Wine
+https://wiki.winehq.org/Mono
+
+https://www.techperiod.com/install-windows-exe-files-linux/
+
+https://www.reddit.com/r/wine_gaming/comments/8r6low/guide_how_to_install_net_45_on_64bit_prefixes/
+
+
+alternative
+
+https://heiko-sieger.info/creating-a-windows-10-virtual-machine-using-the-virtual-machine-manager-virt-manager/
+https://heiko-sieger.info/running-windows-10-on-linux-using-kvm-with-vga-passthrough/
+
+to uninstall an application
+$ wine uninstaller

@@ -1,4 +1,8 @@
 HP
+$ sudo apt install hplip nmap
+
+to discover the printer
+$ nmap -sP 192.168.1.0/24
 
 cups to add a printer. Works well to connect to HP
 interface web : http://localhost:631/
@@ -28,10 +32,3 @@ simple-scan hpaio:/net/photosmart_wireless_b109n-z?ip=192.168.1.11
 
 The compatible models are found here:
 [photosmart_wireless_b109n-z] from /usr/share/hplip/data/models/models.dat
-
-
-#to scan the network
-nmap -sn 192.168.1.0/24
-
-
-

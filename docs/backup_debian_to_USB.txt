@@ -1,8 +1,7 @@
+
 Backup on usb drive
 
 gpart => create partition on drive
-
-
 
 
 #rsync => copy files

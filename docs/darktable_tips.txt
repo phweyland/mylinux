@@ -1,0 +1,2 @@
+Setup config dir
+$ /opt/darktable/bin/darktable --configdir ~/Documents/darktable/config/

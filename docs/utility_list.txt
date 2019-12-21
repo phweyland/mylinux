@@ -1,0 +1,61 @@
+Gparted
+sqlitestudio
+bulkrenameutility -> wine
+thumbnails with Nautilus Files
+atom
+veracrypt (to substitute axcrypt)
+vuescan
+
+
+displaycal (to calibrate the screen) + xiccd (to install the created profile)
+
+mlterm config : ctrl-right click
+
+
+to get the UUID:
+$ sudo blkid
+
+mount DataD
+$ sudo mkdir /media/DataD
+$ sudo mount UUID=B86C516C6C512682 /media/DataD
+
+disk mount at boot time
+add an entry in /etc/fstab like:
+UUID=B86C516C6C512682                     /media/DataD   ntfs    defaults,noatime 0 2
+
+to create a shortcut on desktop
+$ ln -s <which folder> ~/Desktop
+
+devolo
+http://update.devolo.com/
+Issue at install. see:
+https://people.debian.org/~hmh/invokerc.d-policyrc.d-specification.txt
+
+In /usr/sbin/policy-rc.d
+change exit 101 for exit 0
+
+https://www.spotify.com/fr/download/linux
+
+sometimes a pachage install with dpkg -i is missing some dependencies.
+most of the time
+$ sudo apt-get install --fix-broken
+solves the issue
+
+anydesk
+to avoid autorun use Menu / Startup Applications
+
+to check installed application
+$ apt list | grep xxx
+$ apt-cache policy xxx
+
+
+to build photoflow
+$ sudo apt-get install gtk-doc-tools => gtkdocize
+$ sudo apt-get install gobject-introspection
+$ sudo apt-get install libfftw3-dev
+$ sudo apt-get install orc-0.4
+$ sudo apt-get install libsigc++-2.0-dev
+$ sudo apt-get install gtkmm-2.4
+
+but it is simpler to use appimage and make it executable:
+$ chmod a+x xxx.AppImage
