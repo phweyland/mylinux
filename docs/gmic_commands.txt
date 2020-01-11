@@ -15,6 +15,9 @@ $ gmic -i <filename1>.png -compress_clut 1.25,0.75,2048 -o <filename1>.gmz
 #compress cube file to gmz:
 gmic -input_cube <filename1>.cube -compress_clut -o <filename2>.png
 
+# add compress lut to gmz file
+gmic -i <filename1>.gmz -i <filename2>.gmz -o <filename2>.gmz
+
 
 
 Old log

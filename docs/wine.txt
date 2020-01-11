@@ -1,3 +1,8 @@
+playonlinux
+can be more secure because each program has its own instance of wine.
+
+
+
 Wine
 https://wiki.winehq.org/Debian
 https://tecadmin.net/install-wine-on-debian-10-buster/
@@ -6,7 +11,6 @@ $ sudo dpkg --add-architecture i386
 $ wget -nc https://dl.winehq.org/wine-builds/winehq.key
 $ sudo apt-key add winehq.key
 
-Better:
 Add this content to /etc/apt/sources.list:
 deb https://dl.winehq.org/wine-builds/debian/ buster main
 

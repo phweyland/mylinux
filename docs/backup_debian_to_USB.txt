@@ -5,10 +5,29 @@ gpart => create partition on drive
 
 
 #rsync => copy files
-#see https://wiki.archlinux.org/index.php/Rsync#As_a_backup_utility
+https://wiki.archlinux.org/index.php/Rsync#As_a_backup_utility
+https://www.ostechnix.com/backup-entire-linux-system-using-rsync/
 
-with permission
+$ sudo fdisk -l
+$ sudo mount /dev/sdx1 /mnt
 
+$ sudo rsync -aAXv \
+--exclude=/dev/* \
+--exclude=/proc/* \
+--exclude=/sys/* \
+--exclude=/tmp/* \
+--exclude=/run/* \
+--exclude=/mnt/* \
+--exclude=/media/* \
+--exclude=/lost+found \
+--exclude=/home/philippe/Downloads/* \
+--exclude=/home/philippe/.local/share/Trash/* \
+--exclude=/home/philippe/.cache/* \
+--exclude=/home/philippe/git/* \
+/ /mnt
+
+
+Grsync
 #backup root
 Grsync
 
