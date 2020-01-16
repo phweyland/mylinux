@@ -1,0 +1,19 @@
+#use virtual environment
+#to install development
+https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+
+#to activate virtualenv
+$ source env/bin/activate
+
+#to build the site
+$ pelican -s pelicanconf.py
+
+#to exit virtualenv
+$ deactivate
+
+#to test
+$ cd output
+$ python -m SimpleHTTPServer
+
+#in browser enter:
+localhost:8000

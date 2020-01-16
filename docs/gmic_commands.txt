@@ -13,11 +13,16 @@ $ gmic -i gmic_cluts.gmz -repeat \$!,k -local[\$k] -o "{0,n}".gmz,uchar -endloca
 $ gmic -i <filename1>.png -compress_clut 1.25,0.75,2048 -o <filename1>.gmz
 
 #compress cube file to gmz:
-gmic -input_cube <filename1>.cube -compress_clut -o <filename2>.png
+gmic -input_cube <filename1>.cube -compress_clut 1.25,0.75,2048 -o <filename1>.gmz
 
 # add compress lut to gmz file
 gmic -i <filename1>.gmz -i <filename2>.gmz -o <filename2>.gmz
 
+# list library lut names
+gmic -i gmic_cluts.gmz -repeat \$!,k -local[\$k] echo_stdout[] "{0,n}" -endlocal -done -quit
+
+# remove lutname from library
+gmic -i library.gmz -remove[lutname] -o library.gmz
 
 
 Old log
@@ -56,7 +61,7 @@ gmic d\edgyember.png split y append c permute yxzc -decompress_clut 48,48,48 -o 
 gmic -i gmic_cluts.png ht={{0,h}/2} split y,$ht -repeat $ht,k -outputn[$k] d/lut.png,$k -done
 
 
-gmic -i gmic_cluts.png ht={{0,h}/2} lr={0,w} split y,$ht -repeat $ht,k -local[$k] lr1=$lr y=1 -repeat $lr,k1 x=$k1 -if $x!=0 -if i($x,0,0,0)==0 -if i($x,0,0,1)==0 -if i($x,0,0,2)==0 columns 0,{$x-1} -break -endif -endif -endif -endif -done -endlocal -outputn[$k] d/lut.png,$k -done 
+gmic -i gmic_cluts.png ht={{0,h}/2} lr={0,w} split y,$ht -repeat $ht,k -local[$k] lr1=$lr y=1 -repeat $lr,k1 x=$k1 -if $x!=0 -if i($x,0,0,0)==0 -if i($x,0,0,1)==0 -if i($x,0,0,2)==0 columns 0,{$x-1} -break -endif -endif -endif -endif -done -endlocal -outputn[$k] d/lut.png,$k -done
 
 gmic -i gmic_cluts.png ht={{0,h}/2} lr={0,w} split y,$ht -repeat $ht,k -local[$k] lr1=$lr y=1 -repeat $lr,k1 x=$k1 -if $x!=0 -if i($x,0,0,0)==0 -if i($x,0,0,1)==0 -if i($x,0,0,2)==0 -columns 0,{$x-1} -split y -append c -permute yxzc -break -endif -endif -endif -endif -done -endlocal -outputn[$k] d/lut.gmz,$k -done
 
@@ -76,6 +81,3 @@ gmic -i <filename1>.png -compress_clut 8,2,2048 split c -r[3] 100%,100%,100%,3,1
 
 #Color to color cube:
 gmic -input_cube <filename1>.cube -compress_clut 8,2,2048 split c,2 append x permute yxzc -o <filename2>.png
-
-
-

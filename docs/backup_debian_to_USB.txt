@@ -20,12 +20,12 @@ $ sudo rsync -aAXv \
 --exclude=/mnt/* \
 --exclude=/media/* \
 --exclude=/lost+found \
---exclude=/home/philippe/Downloads/* \
 --exclude=/home/philippe/.local/share/Trash/* \
 --exclude=/home/philippe/.cache/* \
 --exclude=/home/philippe/git/* \
 / /mnt
 
+--exclude=/home/philippe/Downloads/* \
 
 Grsync
 #backup root

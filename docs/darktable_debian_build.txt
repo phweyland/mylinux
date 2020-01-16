@@ -59,7 +59,8 @@ See nvidia_driver.txt
 gmic 2.8.1 debian buster
 https://www.fosshub.com/GMIC.html
 
-
+GMIC
+https://gmic.eu/files/source/
 
 for doc:
 $ sudo apt-get install python3-jsonschema
