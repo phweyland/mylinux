@@ -1,0 +1,73 @@
+https://www.google.com/search?client=firefox-b-e&q=linux+missing+firmware
+
+$sudo dmesg
+==> gives missing firmware
+
+add contrib non-free to /etc/apt/sources.list
+
+$ sudo apt-cache search rt73.bin
+=>
+$ sudo apt-get install firmware-misc-nonfree
+to remove the warning (had a boot issue with initramfs)
+$ sudo apt-get remove cryptsetup-initramfs
+
+
+not necessary for wifi:
+$ sudo apt-cache search rtl8168h-2.fw
+=>
+$ sudo apt-get install firmware-realtek
+
+$sudo dmesg
+=> ADDRCONF(NETDEV_UP): wlx00195bcd7c49: link is not ready
+
+
+https://tutel.me/c/unix/questions/386925/quotaborting+authentication+by+local+choice+reason+3deauth_leavingquot+when+trying+to+connect+to+wifi
+
+disable networking to use only Network Manager
+$ sudo systemctl disable networking.service
+
+and set the configuration to find out wlx00195bcd7c49 as wlan0
+$ sudo nano /etc/udev/rules.d/70-rename-wlan.rules
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="wlan*", NAME="wlan0"
+
+and reboot
+
+
+
+
+not necessary :
+$ sudo nano /etc/systemd/network/50-wlan.link
+
+[Match]
+Type=wlan
+
+[Link]
+Name=wlan0
+
+
+should bet let as it is:
+$ sudo nano /etc/network/interfaces.d/setup
+
+
+not necessary :
+$ sudo apt-get install linux-headers-$(uname -r)
+
+
+
+
+https://wiki.archlinux.org/index.php/Network_configuration/Wireless#Manual_setup
+
+https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php/Wireless_network_configuration.html
+
+
+services
+$ sudo systemctl list-unit-files --state=enabled
+$ sudo systemctl list-units | grep -iE '(net|dhcp|wpa|conn|wicd)'
+
+
+https://unix.stackexchange.com/questions/530081/startup-debian-10-error-networking-service-loading-failed
+
+
+
+
+
