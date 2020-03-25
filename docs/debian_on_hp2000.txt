@@ -1,0 +1,14 @@
+# debian 10 hp2000
+# need non-free packages:
+# - firmware-amd-graphics
+# - firmware-realtek
+# - firmware-ralink
+
+# To enable user list at login time, place the following setting into /etc/lightdm/lightdm.conf.d/01_my.conf:
+
+[Seat:*]
+greeter-hide-users=false
+
+
+#unfortunately I haven't succeeded in making shutdown work.
+# it always reboot alone ...

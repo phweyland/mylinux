@@ -22,6 +22,9 @@ $ sudo rsync -aAXv \
 --exclude=/lost+found \
 --exclude=/home/philippe/.local/share/Trash/* \
 --exclude=/home/philippe/.cache/* \
+--exclude=/home/philippe/.mozilla/* \
+--exclude=/home/philippe/.thunderbird/* \
+--exclude=/home/philippe/Pictures/* \
 --exclude=/home/philippe/git/* \
 / /mnt
 

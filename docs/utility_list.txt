@@ -27,12 +27,18 @@ to create a shortcut on desktop
 $ ln -s <which folder> ~/Desktop
 
 devolo
-http://update.devolo.com/
+if 32 architecture not yet installed we need that:
+$ sudo dpkg --add-architecture i386
+$ sudo apt-get update
 Issue at install. see:
 https://people.debian.org/~hmh/invokerc.d-policyrc.d-specification.txt
-
 In /usr/sbin/policy-rc.d
 change exit 101 for exit 0
+
+get devolo:
+http://update.devolo.com/
+
+
 
 https://www.spotify.com/fr/download/linux
 
@@ -59,3 +65,8 @@ $ sudo apt-get install gtkmm-2.4
 
 but it is simpler to use appimage and make it executable:
 $ chmod a+x xxx.AppImage
+
+#booting on windows can end up to initramfs issue at debian boot time.
+#=> remove metadata_csum & 64bit from /etc/mke2fs.conf from usb boot (doesn't work)
+#=> uninstall ext2fsd windows driver which is not compatible (does work)
+#=> to repair, from usb gparted check (that actually repair) the ext4 partitions

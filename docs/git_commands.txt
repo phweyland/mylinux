@@ -108,6 +108,10 @@ $ git clean -df
 # to revert to a certain commit
 $ git checkout <commit number>
 
+#to cancel the last commits
+$ git reset HEAD~1
+$ git reset --soft HEAD^
+
 # To delete a local branch
 $ git branch -d the_local_branch
 
@@ -176,3 +180,32 @@ $ git branch -D meta-copy
 $ git checkout meta-copy
 $ git merge --squash meta-copy-restart
 $ git commit
+
+#other squash (works great !)
+$ git reset $(git merge-base master $(git rev-parse --abbrev-ref HEAD))
+$ git add -A
+$ git commit -m "v1 - fixed most of the bugs - accelerators now apply to latest module in pipe"
+$ git push origin --force
+
+# make the difference between 2 branches
+$ git diff master Branch1 > ../patchfile
+$ git checkout Branch2    
+$ git apply ../patchfile
+
+# Cloning our fork
+$ git clone git@github.com:ifad/rest-client.git
+
+# Adding (as "endel") the repo from we want to cherry-pick
+$ git remote add endel git://github.com/endel/rest-client.git
+
+# Fetch their branches
+$ git fetch endel
+
+# List their commits
+$ git log endel/master
+
+# Cherry-pick the commit we need
+$ git cherry-pick 97fedac
+
+# who has committed a given file ?
+$ git log --format="%an" ../src/libs/tagging.c | sort | uniq
