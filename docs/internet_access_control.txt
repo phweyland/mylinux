@@ -23,6 +23,10 @@ if the command is batch file, make it executable
 $ chmod ug+x <file>
 done
 
+or, simpler
+
+go to wine control> internet settings > Connections > Use proxy server > http://localhostanything.com port 80
+
 ## user and group commands
 create user
 $ sudo adduser <newusername>

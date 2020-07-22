@@ -1,0 +1,2 @@
+In case of time issue on windows side:
+Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_QWORD /d 1

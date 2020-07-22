@@ -41,6 +41,7 @@ $ git submodule init
 $ git submodule update
 
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/darktable ../.
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/dt ../.
 
 https://redmine.darktable.org/projects/darktable/wiki/Building_darktable_22/8.pdf
 maybe more accurate from build:
@@ -75,3 +76,8 @@ $ sudo apt-get install po4a
 
 to test CSS
 $ GTK_DEBUG=interactive darktable
+
+#if dt hangs
+$ killall -SIGSEGV darktable
+
+#gdb

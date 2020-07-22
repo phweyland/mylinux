@@ -5,19 +5,33 @@ This video fails for me but gives the main points:
 https://www.youtube.com/watch?v=SpTzOXy07y0
 
 
-How to install in Ubuntu 17.04. use17 steps writen by John Wolter in winehq
+How to install in Ubuntu 17.04. use17 steps written by John Wolter in winehq
 https://appdb.winehq.org/objectManager.php?sClass=version&iId=34500
-
 .Net 4.5.2 downloaded from Microsoft site here
 https://www.microsoft.com/en-us/download/details.aspx?id=42642
-
 Needed dlls downloaded from here. You will need both, the 32-bit and the 64-bit version
 https://www.dll-files.com/mfc140u.dll.html
-
 Extract .msi package from install .exe file. Not sure this is mandatory but doesn't hurt.
 Unlike the video, using the system wine (instead wine 2.1 stage) does work.
-
 Remain to solve:
 - webhelper fails. Not a big deal.
 
 http://ubuntuhandbook.org/index.php/2014/06/install-google-Sketchup-ubuntu1404/
+
+
+22/07/2020
+Procedure with wine-stable 5.0.1
+
+$ export WINEARCH=win64
+$ winetricks vcrun2013 vcrun2015 corefonts
+$ winetricks win7
+- Download .NET Framework 4.5.2 (offline version) and install it with the command:
+$ wine start /unix NDP452-KB2901907-x86-x64-AllOS-ENU.exe
+- Then run the actual SketchUp installer:
+$ wine SketchUp2017-x64.msi
+- Follow the installation steps
+- Run SketchUp (you can run it just fine from the .desktop created by WINE itself)
+
+The plugin fix_sketchup_wine.rb helps to get right behavior on object selection
+Extension manager works but all popups miss the close button.
+Some extensions work

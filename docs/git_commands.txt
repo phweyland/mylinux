@@ -7,7 +7,7 @@ $ git status
 $ add .
 $ git commit -m "initial ..."
 
-# Set a new remote (doesn't create really the remote respository, just the local reference)
+# Set a new remote (doesn't create really the remote repository, just the local reference)
 $ git remote add origin https://github.com/user/repo.git
 
 # Verify new remote
@@ -189,7 +189,7 @@ $ git push origin --force
 
 # make the difference between 2 branches
 $ git diff master Branch1 > ../patchfile
-$ git checkout Branch2    
+$ git checkout Branch2
 $ git apply ../patchfile
 
 # Cloning our fork
@@ -209,3 +209,7 @@ $ git cherry-pick 97fedac
 
 # who has committed a given file ?
 $ git log --format="%an" ../src/libs/tagging.c | sort | uniq
+
+
+# submodules update
+git pull --rebase --rescure-submodules
