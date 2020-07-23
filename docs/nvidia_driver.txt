@@ -22,5 +22,8 @@ redémarrer ou bien charger le driver nvidia et relancer le mode graphique :
 $ sudo modprobe nvidia
 $ sudo service sddm restart
 
-pour activer opencl
+pour activer opencl:
 $ sudo apt install nvidia-opencl-dev
+
+pour faire fonctionner google sketchup (32 bits):
+install 'nvidia-driver-libs-i386:i386' and 'nvidia-vulkan-icd:i386' packages

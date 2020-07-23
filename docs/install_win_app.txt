@@ -35,3 +35,14 @@ $ wine SketchUp2017-x64.msi
 The plugin fix_sketchup_wine.rb helps to get right behavior on object selection
 Extension manager works but all popups miss the close button.
 Some extensions work
+
+23/07/2020
+For google sketchup 8
+install 'nvidia-driver-libs-i386:i386' and 'nvidia-vulkan-icd:i386' packages
+new prefix
+$ export WINEARCH=win64
+$ winetricks corefonts vcrun6 vcrun2005
+$ wine start "GoogleSketchup install.exe"
+Run Google SketchUp
+In regedit make sure HCU\Software\Google\SketcUp8\GLConfig\Display\HW_OK=1
+The plugin fix_sketchup_wine.rb is as useful as for SketchUp 2017
