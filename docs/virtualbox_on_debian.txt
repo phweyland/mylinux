@@ -1,0 +1,14 @@
+
+
+https://www.sysnettechsolutions.com/en/install-windows-7-virtualbox-windows-10/
+https://linuxize.com/post/how-to-install-virtualbox-on-debian-10/
+
+sudo usermod -a -G vboxusers $USER
+
+for usb3 extensions pack all plateforms on
+https://www.techrepublic.com/article/how-to-enable-usb-in-virtualbox/
+https://www.virtualbox.org/wiki/Downloads
+
+Succeeded in making work opengl 2 but not opengl 3.
+
+

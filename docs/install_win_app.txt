@@ -46,3 +46,4 @@ $ wine start "GoogleSketchup install.exe"
 Run Google SketchUp
 In regedit make sure HCU\Software\Google\SketcUp8\GLConfig\Display\HW_OK=1
 The plugin fix_sketchup_wine.rb is as useful as for SketchUp 2017
+Component attributes management doesn't works through
