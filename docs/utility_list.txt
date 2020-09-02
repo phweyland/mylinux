@@ -66,6 +66,12 @@ $ sudo apt-get install gtkmm-2.4
 but it is simpler to use appimage and make it executable:
 $ chmod a+x xxx.AppImage
 
+see the access rights
+$ls -l
+to give all rights to a folder
+$ chmod
+
+
 #booting on windows can end up to initramfs issue at debian boot time.
 #=> remove metadata_csum & 64bit from /etc/mke2fs.conf from usb boot (doesn't work)
 #=> uninstall ext2fsd windows driver which is not compatible (does work)

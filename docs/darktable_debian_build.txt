@@ -81,3 +81,10 @@ $ GTK_DEBUG=interactive darktable
 $ killall -SIGSEGV darktable
 
 #gdb
+
+
+
+#lensfun database update
+$ sudo add-apt-repository ppa:pmjdebruijn/darktable-release
+$ sudo apt-get update
+$ sudo apt install lensfun

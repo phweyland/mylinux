@@ -159,9 +159,10 @@ $git rm <file to be removed>
 git ls-tree --name-only -r <commit>
 git ls-tree --full-tree -r HEAD
 
-git remote add -t remote-branch remote-name remote-url
-undo changes on branch
-git checkout -- <file>
+$ git remote add -t remote-branch remote-name remote-url
+
+#undo changes on branch
+$git checkout -- <file>
 
 
 
