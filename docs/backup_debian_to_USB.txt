@@ -26,6 +26,9 @@ $ sudo rsync -aAXv \
 --exclude=/home/philippe/.thunderbird/* \
 --exclude=/home/philippe/Pictures/* \
 --exclude=/home/philippe/git/* \
+--exclude=/home/philippe/.PlayOnLinux/* \
+--exclude=/home/philippe/Documents/meshroom/* \
+--exclude=/var/lib/docker/* \
 / /mnt
 
 --exclude=/home/philippe/Downloads/* \

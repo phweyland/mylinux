@@ -20,3 +20,12 @@ go to virtual machine settings > options
 new vm does not appear in vm library
 go to privacy settings and tell it to remember recently accessed files (Set to "on") and Never forget old files (Set to "On")
 
+
+to uninstall:
+$ sudo vmware-installer -u vmware-player
+
+
+with kernel 5.7.0
+https://github.com/mkubecek/vmware-host-modules/
+to get compatible modules
+

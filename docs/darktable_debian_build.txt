@@ -40,6 +40,7 @@ $ sudo apt install cmake debhelper intltool iso-codes libcairo2-dev libcolord-de
 $ git submodule init
 $ git submodule update
 
+$ cmake -DCMAKE_INSTALL_PREFIX=/opt/darktable -DCMAKE_PREFIX_PATH=/usr/local/ ../.
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/darktable ../.
 $ cmake -DCMAKE_INSTALL_PREFIX=/opt/dt ../.
 
@@ -81,10 +82,19 @@ $ GTK_DEBUG=interactive darktable
 $ killall -SIGSEGV darktable
 
 #gdb
+# to break on Gtk-CRITICAL warning
+$ G_DEBUG=fatal_warnings gdb ...
 
-
+#to see the stack
+#    bt - backtrace: show stack functions and args
+#    info frame - show stack start/end/args/locals pointers
+#    x/100x $sp - show stack memory
+#    x/4xw $sp  - to print four words (w ) of memory above the stack pointer (here, $sp) in hexadecimal (x)
 
 #lensfun database update
 $ sudo add-apt-repository ppa:pmjdebruijn/darktable-release
 $ sudo apt-get update
 $ sudo apt install lensfun
+
+# to track signals
+$ darktable -d-signal ALL --d-signal-act all -d signal

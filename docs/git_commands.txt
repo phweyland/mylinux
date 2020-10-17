@@ -214,3 +214,33 @@ $ git log --format="%an" ../src/libs/tagging.c | sort | uniq
 
 # submodules update
 git pull --rebase --rescure-submodules
+
+# To pull an existing PR from an upstream project.
+$ git fetch [NAME REMOTE PROJECT] pull/[PR NUMBER]/head:[PR BRANCH NAME]Example:
+# example
+$ git fetch https://github.com/darktable-org/darktable pull/7201/head:tag-fix2
+
+# other way
+$ git checkout master
+$ git merge head:tag-fix2
+
+# So that you can have multiple PR merged into your master for testing purpose
+# When done you can revert your master to the current state in upstream:
+
+$ git reset --hard upstream/master
+
+# checkout out a remote tag
+$ git checkout tags/<tag_name> -b <branch_name>
+
+#undo delete branch
+$ git branch <branch name> 5e45b5914
+
+#amend a commit which is not the last one
+
+$ git rebase -i 'bbc643cd^'
+# In editor, modify pick to edit in the line mentioning 'bbc643cd'
+# we are back just before this commit
+$ git commit --all --amend --no-edit
+
+# cancel the last commit
+$ git reset HEAD^
