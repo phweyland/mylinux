@@ -1,0 +1,6 @@
+# create a bootable usb from linux
+
+$ sudo dd if=/home/user/file.img of=/dev/sdX bs=1M
+
+# Replace /home/user/file.img with the path to the IMG file on your file system
+# and /dev/sdX with the path to your USB or SD card device.
