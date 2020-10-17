@@ -27,3 +27,23 @@ $ sudo apt install nvidia-opencl-dev
 
 pour faire fonctionner google sketchup (32 bits):
 install 'nvidia-driver-libs-i386:i386' and 'nvidia-vulkan-icd:i386' packages
+
+
+# commands to check things
+lspci -nnk | grep -EA3 "3D|VGA"
+ls /lib/modprobe.d/
+dpkg -l | grep -i nvidia
+mokutil --sb-state
+
+
+# kernel 5.9
+# add
+deb http://deb.debian.org/debian experimental main contrib non-free
+deb-src http://deb.debian.org/debian experimental main contrib non-free
+# in /etc/apt/sources.list
+$ sudo apt install -t experimental nvidia-driver
+$ sudo apt install -t experimental nvidia-opencl-dev
+$ sudo apt install -t experimental nvidia-libopencl1
+
+# don't if it helped but run:
+$sudo update-grub
