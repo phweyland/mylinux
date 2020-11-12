@@ -71,6 +71,8 @@ $ls -l
 to give all rights to a folder
 $ chmod
 
+#create a shortcut to folder
+$ ln -s /path ./shortcut_name
 
 #booting on windows can end up to initramfs issue at debian boot time.
 #=> remove metadata_csum & 64bit from /etc/mke2fs.conf from usb boot (doesn't work)

@@ -214,3 +214,8 @@ $ git log --format="%an" ../src/libs/tagging.c | sort | uniq
 
 # submodules update
 git pull --rebase --rescure-submodules
+
+#if author / email is not correct
+
+$ git config --global --edit
+$ git commit --amend --reset-author
