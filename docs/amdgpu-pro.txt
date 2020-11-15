@@ -1,0 +1,13 @@
+14/11/2020 kernel 5.9. onlyf this way works:
+AMD/ATI Drivers (amdgpu, radeon, r128, mach64)
+https://wiki.debian.org/AtiHowTo
+
+Tried several ways to install the amd drivers without success:
+AMDGPUDriverOnStretchAndBuster2
+https://wiki.debian.org/AMDGPUDriverOnStretchAndBuster2?action=show&redirect=How+to+install+official+AMDGPU+linux+driver+with+kernel+4.19.x+on+Stretch+and+Buster
+
+Install amdgpu-pro packages on Debian (openCL, mesa, VCE) only.
+https://gist.github.com/kadrim/5f0b96d20b3677a6681ed461a0df514d
+
+There is also a way to set up a temporary source on amdgpu-pro and to install from there
+only what's needed
