@@ -5,7 +5,7 @@ https://linuxhint.com/install_vmware_workstation_pro_debian_10/
 Download vmware bundle from here
 https://www.vmware.com/products/workstation-pro.html
 
-Install wmware tools when installing the new vm when vm launched 
+Install wmware tools when installing the new vm when vm launched
 if virtual machine settings > install vmware tools is disabled
 & if windows installed from iso cd/dvd
 set it as use a physical drive + auto detect
@@ -18,14 +18,28 @@ go to virtual machine settings > options
 
 
 new vm does not appear in vm library
-go to privacy settings and tell it to remember recently accessed files (Set to "on") and Never forget old files (Set to "On")
+go to privacy settings and tell it to remember recently accessed files
+(Set to "on") and Never forget old files (Set to "On")
 
 
 to uninstall:
 $ sudo vmware-installer -u vmware-player
-
+or
+$ sudo vmware-installer -u vmware-workstation
 
 with kernel 5.7.0
 https://github.com/mkubecek/vmware-host-modules/
 to get compatible modules
 
+15/11/2020 vmware 16
+https://communities.vmware.com/t5/VMware-Workstation-Player/Can-t-find-gcc-version-to-compile-linux-kernel-modules/td-p/2291603
+
+$ git clone https://github.com/mkubecek/vmware-host-modules.git
+$ cd vmware-host-modules
+$ git checkout player-16.0.0
+
+After this you have to compile it, install it and either restart or start vmware:
+
+$ make
+$ sudo make install
+$ sudo /etc/init.d/vmware start
