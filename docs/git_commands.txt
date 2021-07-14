@@ -244,3 +244,18 @@ $ git commit --all --amend --no-edit
 
 # cancel the last commit
 $ git reset HEAD^
+
+#Rebase a branch on upstream
+# fetch origin changes
+git fetch -p origin
+#fetch upstream changes
+git fetch upstream
+#switch to master and merge upstream changes
+git checkout master
+git merge upstream/master
+#push to your repo
+git push
+#update your branch
+git checkout JPV-max-recent-collect
+#and the worst part
+git rebase master
