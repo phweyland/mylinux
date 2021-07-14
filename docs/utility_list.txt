@@ -71,8 +71,14 @@ $ls -l
 to give all rights to a folder
 $ chmod
 
+#create a shortcut to folder
+$ ln -s /path ./shortcut_name
 
 #booting on windows can end up to initramfs issue at debian boot time.
 #=> remove metadata_csum & 64bit from /etc/mke2fs.conf from usb boot (doesn't work)
 #=> uninstall ext2fsd windows driver which is not compatible (does work)
 #=> to repair, from usb gparted check (that actually repair) the ext4 partitions
+
+#disable alt-click in cinnamon
+Go to System Settings->Windows and there is a setting called "Special key to move and resize windows".
+That's the setting you're looking for and it's possible to disable it completely from there.

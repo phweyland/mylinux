@@ -259,3 +259,7 @@ git push
 git checkout JPV-max-recent-collect
 #and the worst part
 git rebase master
+
+#if author / email is not correct
+$ git config --global --edit
+$ git commit --amend --reset-author

@@ -1,0 +1,60 @@
+https://www.techpowerup.com/gpu-specs/radeon-rx-vega-10-mobile.c3053
+
+$ glxinfo | grep "OpenGL version"
+OpenGL version string: 4.6 (Compatibility Profile) Mesa 20.1.9
+
+
+14/11/2020 kernel 5.9. onlyf this way works:
+AMD/ATI Drivers (amdgpu, radeon, r128, mach64)
+https://wiki.debian.org/AtiHowTo
+
+Tried several ways to install the amd drivers without success:
+AMDGPUDriverOnStretchAndBuster2
+https://wiki.debian.org/AMDGPUDriverOnStretchAndBuster2?action=show&redirect=How+to+install+official+AMDGPU+linux+driver+with+kernel+4.19.x+on+Stretch+and+Buster
+
+Install amdgpu-pro packages on Debian (openCL, mesa, VCE) only.
+https://gist.github.com/kadrim/5f0b96d20b3677a6681ed461a0df514d
+
+There is also a way to set up a temporary source on amdgpu-pro and to install from there
+only what's needed:
+https://linuxconfig.org/install-opencl-for-the-amdgpu-open-source-drivers-on-debian-and-ubuntu
+
+My way installing OpenCL from proprietary driver on Debian Buster:
+
+    Download radeon driver (tested on Revision 19.30)
+    Extract files
+    tar xf amdgpu-pro-19.30-855429-ubuntu-18.04.tar.xz
+
+    Rename folder
+    $ mv amdgpu-pro-19.30-855429-ubuntu-18.04 amdgpu-pro-repo
+
+    Move your repository to /opt
+    $ sudo mv amdgpu-pro-repo /opt
+
+    Create your repository
+    $ sudo nano /etc/apt/sources.list.d/amdgpu-pro.list
+
+Content:
+    deb file:/opt/amdgpu-pro-repo /
+
+    Update apt allowing insecure repositories security risks
+    $ sudo apt update --allow-insecure-repositories
+
+    Install legacy opencl driver. Allow again to install non-signed packages.
+    $ sudo apt install clinfo-amdgpu-pro opencl-orca-amdgpu-pro-icd
+
+Optional steps:
+8) Install package clinfo (some aplications use it)
+    $ sudo apt install clinfo
+
+    Remove your repository if you do not want to see more warnings during apt upgrade
+    $ sudo rm /etc/apt/sources.list.d/amdgpu-pro.list
+
+    Remove files if you want to save disk space
+    $ sudo rm -Rf /opt/amdgpu-pro-repo
+
+Now you have your device with full opencl support. (Tested for AMD RX 570 and RX 550 graphics cards)
+
+To remove the packages simply
+
+    $ sudo apt remove --auto-remove clinfo-amdgpu-pro opencl-orca-amdgpu-pro-icd

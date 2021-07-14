@@ -98,3 +98,7 @@ $ sudo apt install lensfun
 
 # to track signals
 $ darktable -d-signal ALL --d-signal-act all -d signal
+
+#printf no buffering:
+setvbuf(stdout, NULL, _IONBF, 0);
+
