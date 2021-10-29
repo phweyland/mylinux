@@ -1,0 +1,7 @@
+$ apt install linux-headers-$(uname -r)
+
+$ git clone https://github.com/clnhub/rtl8192eu-linux
+
+$ cd rtl8192eu-linux
+
+#read README.md

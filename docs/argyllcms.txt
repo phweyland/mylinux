@@ -1,0 +1,88 @@
+xprop -display :0.0 -len 15 -root _ICC_PROFILE
+
+dispcal -r (without color profile)
+dispcal -R (with color profile)
+dispcal -v -b 100 -gs -t 6500 -o asus_D65_100
+dispwin -I asus_D65_100.icc
+
+# calibrate
+$ dispcal -v -m -H -b 100 -g 2.2 -t 6500 samsung_D65_100_20211213
+# generate profiling test target
+$ targen -v -d 3 -G -f 128 samsung_D65_100_20211213
+# profile
+$ dispread -v -N -H -y l -k samsung_D65_100_20211213.cal samsung_D65_100_20211213
+# generate final ICC profile
+$ colprof -v -q h -a G -n c samsung_D65_100_20211213
+
+# to be compatible with vkdt:  -aG
+https://encrypted.pcode.nl/blog/index.html%3Fp=983.html
+
+
+/usr/share/color
+~/.local/share/icc
+
+Asus
+
+Uncalibrated response:
+Black level = 0.4281 cd/m^2
+50%   level = 63.56 cd/m^2
+White level = 306.03 cd/m^2
+Aprox. gamma = 2.27
+Contrast ratio = 715:1
+White chromaticity coordinates 0.2944, 0.3015
+White    Correlated Color Temperature = 8152K, DE 2K to locus =  1.9
+White Correlated Daylight Temperature = 8164K, DE 2K to locus =  6.1
+White        Visual Color Temperature = 8294K, DE 2K to locus =  1.8
+White     Visual Daylight Temperature = 8696K, DE 2K to locus =  5.7
+dispcal: Warning - Unable to determine effective Video LUT entry bit depth
+
+Current calibration response: D65 100
+Black level = 0.3115 cd/m^2
+50%   level = 21.76 cd/m^2
+White level = 100.52 cd/m^2
+Aprox. gamma = 2.21
+Contrast ratio = 323:1
+White chromaticity coordinates 0.3113, 0.3275
+White    Correlated Color Temperature = 6594K, DE 2K to locus =  4.5
+White Correlated Daylight Temperature = 6596K, DE 2K to locus =  0.2
+White        Visual Color Temperature = 6426K, DE 2K to locus =  4.3
+White     Visual Daylight Temperature = 6602K, DE 2K to locus =  0.2
+
+Current calibration response: D65 200
+Black level = 0.2680 cd/m^2
+50%   level = 42.80 cd/m^2
+White level = 199.47 cd/m^2
+Aprox. gamma = 2.22
+Contrast ratio = 744:1
+White chromaticity coordinates 0.3133, 0.3291
+White    Correlated Color Temperature = 6472K, DE 2K to locus =  4.3
+White Correlated Daylight Temperature = 6475K, DE 2K to locus =  0.5
+White        Visual Color Temperature = 6322K, DE 2K to locus =  4.1
+White     Visual Daylight Temperature = 6491K, DE 2K to locus =  0.5
+
+Current calibration response: D65 300
+Black level = 0.2717 cd/m^2
+50%   level = 62.21 cd/m^2
+White level = 291.92 cd/m^2
+Aprox. gamma = 2.23
+Contrast ratio = 1075:1
+White chromaticity coordinates 0.3132, 0.3299
+White    Correlated Color Temperature = 6469K, DE 2K to locus =  4.9
+White Correlated Daylight Temperature = 6471K, DE 2K to locus =  0.2
+White        Visual Color Temperature = 6297K, DE 2K to locus =  4.7
+White     Visual Daylight Temperature = 6463K, DE 2K to locus =  0.2
+
+
+Samsung syncmaster 2233BW
+
+Current calibration response: D65 100
+Black level = 0.1319 cd/m^2
+50%   level = 17.66 cd/m^2
+White level = 85.29 cd/m^2
+Aprox. gamma = 2.27
+Contrast ratio = 647:1
+White chromaticity coordinates 0.3112, 0.3290
+White    Correlated Color Temperature = 6586K, DE 2K to locus =  5.6
+White Correlated Daylight Temperature = 6588K, DE 2K to locus =  1.1
+White        Visual Color Temperature = 6380K, DE 2K to locus =  5.3
+White     Visual Daylight Temperature = 6550K, DE 2K to locus =  1.1

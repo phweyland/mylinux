@@ -1,0 +1,81 @@
+
+$ git clone https://github.com/TurboGit/scbi
+$ cd scbi
+$ make
+
+Place $HOME/bin dans ton PATH et puis:
+
+$ scbi --deps c-darktable && scbi --run:"darktable" c-darktable
+
+Cela compilera darktable et sa dépendance exiv2 car la bonne version ne sera pas trouvée. Puis lancera darktable. J'utilise SCBI pour la construction et tous mes tests de darktable car il supporte le user's checkout, donc je peux simplement et rapidement construire depuis mon clone avec des modifications.
+
+$ scbi --deps c-darktable:dev && scbi --run:"darktable" c-darktable
+
+Tu as la doc ici : https://github.com/TurboGit/scbi/releases/download/v3.8/scbi.pdf
+
+Ajouter un plug-in est assez simple.
+Le design sur des "hooks" a été inspiré par ce que fait Debian pour la gestion des paquets.
+
+Une petite précision sur SCBI, il est aussi possible de construire facilement une version spécifique d'un logiciel car SCBI est entièrement pilotable depuis la ligne de commande. Par exemple pour construire la version 3.6.1 de darktable et l'installer dans /opt/dt36:
+
+$ scbi --deps --prefix=/opt/dt36 c-darktable:release-3.6.1
+
+Pour construire master régulièrement passez l'option --update:
+
+$ scbi --deps --update c-darktable
+Pour plus d'infos, la doc ou:
+$ scbi --help
+
+Les sources seront toujours dans la sandbox, sauf si tu utilises la version speciale :dev
+
+$ scbi --deps c-darktable:dev
+
+Dans ce cas les sources sont pris dans ton user's checkout qui doit se trouver dans le répertoire défini par la variable SCBI_GIT_REPO (voir doc).
+
+Par défaut cette variable pointe sur $HOME/dev/repositories/git
+
+mettre dans $HOME/.scbi-env (pour pointer sur mon repo):
+SCBI_PLAN=default
+SCBI_GIT_REPO=$HOME/git
+
+
+Pour la dev c'est tout simplement:
+$ scbi --deps c-darktable
+(branche master par défaut)
+
+$ scbi --deps c-darktable:release-3.6.1
+Pour un tag.
+
+$ scbi --deps c-darktable:darktable-3.6.x
+Pour une branche
+
+
+Le plug-in pour darktable (c-darktable) est intéressant car il comporte aussi une variante pour la construction avec clang, on peut simplement faire:
+
+Pour construire la master avec clang:
+$ scbi --deps --update c-darktable/clang
+
+Pour construire la 3.6.1 avec clang:
+$ scbi --deps --update c-darktable/clang:release-3.6.1
+
+
+Pour différentes versions, tu dois utiliser une variante. Une variante utilise des hooks particuliers si ils existent mais aussi un répertoire de build particulier. Donc:
+$ scbi --deps --prefix=/opt/dt36 c-darktable/v36:darktable-3.6.x
+
+Va compiler depuis le tag release-3.6.1 dans un répertoire de la sandbox <TARGET>-v36 et ne pas toucher à ton build default (master).
+
+Pour lancer la 3.6.1:
+$ scbi --deps --run:"darktable" c-darktable/v36:release-3.6.1
+
+$ scbi --deps --run:"darktable --configdir $HOME/tmp/x" c-darktable/v36
+$ scbi --run:"darktable --configdir $HOME/tmp/x" c-darktable/v36
+
+Pour compiler la version v0.26 (tag) d'exiv2.
+$ scbi --deps c-darktable=c-exiv2:v0.26 c-darktable/v361:release-3.6.1
+
+
+Pour lancer la master:
+$ scbi --deps --run:"darktable" c-darktable
+
+Tu peux regarder dans la sandbox : ~/dev/builds/c-darktable
+
