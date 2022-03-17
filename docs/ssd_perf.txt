@@ -1,0 +1,21 @@
+#Increase Performance and lifespan of SSDs & SD Cards
+
+# to monitor disk accesses: iotop
+$ iotop -oPa
+
+#noatime mount option in /etc/fstab
+/dev/sdx / ext4 discard,noatime,errors=remount-ro 0 1
+
+#TRIM
+
+#TRIM is supported if DISC-GRAN and DISC-MAX have non-zero values
+$ lsblk --discard
+
+#check if TRIM is enabled
+$ sudo systemctl status fstrim.timer
+
+#to enable TRIM
+$ sudo systemctl enable fstrim.timer
+* sudo systemctl start fstrim.timer
+
+#see also tmpfs (if enough memory) and decrease swap usage
