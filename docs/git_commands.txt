@@ -263,3 +263,8 @@ git rebase master
 #if author / email is not correct
 $ git config --global --edit
 $ git commit --amend --reset-author
+
+#checkout a branch from another repository
+$ git remote add new_origin https://github.com/jandren/darktable.git
+$ git fetch new_origin
+$ git checkout -b sigmoid_tone_mapping --track new_origin/sigmoid_tone_mapping
