@@ -1,0 +1,12 @@
+$ sudo gpg --no-default-keyring --keyring /usr/share/keyrings/<myrepository>-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5E3C45D7B312C643
+# there is an issue with a /root folder. I've created it manually and then it went through
+
+$ echo "deb [signed-by=/usr/share/keyrings/spotify-archive-keyring.gpg] http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+
+$ sudo apt update
+$ sudo apt install spotify-client
+
+#references
+https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html
+https://community.spotify.com/t5/Desktop-Linux/Problem-Installing-Spotify-on-Ubuntu-18-04/td-p/4572813
+https://community.spotify.com/t5/Desktop-Linux/Can-t-install-Spotify-under-Ubuntu/td-p/5258438
