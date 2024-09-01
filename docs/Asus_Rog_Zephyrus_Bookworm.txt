@@ -1,3 +1,5 @@
+https://computingforgeeks.com/top-must-do-things-after-installing-debian-12-bookworm/
+
 root / usermod -aG sudo philippe
 sudo dpkg-reconfigure locales
 
@@ -67,6 +69,12 @@ https://forums.debian.net/viewtopic.php?t=128306
 ls -1 *.txt | xargs -L1 -I{} cp {} {}.old 
 ls -1 *.txt | xargs -L1 -I{} mv {} {}.old 
 
+#darktable
+https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable
+#darktable opencl
+clinfo
+nvidia-opencl-icd yes
+
 #freecad
   blt calculix-ccx fonts-lyx freecad freecad-common freecad-python3 graphviz
   ibverbs-providers isympy-common isympy3 libaec0 libann0 libarpack2
@@ -102,4 +110,40 @@ ls -1 *.txt | xargs -L1 -I{} mv {} {}.old
   python3-pyside2.qtxml python3-pythran python3-scipy python3-soupsieve
   python3-sympy python3-tk python3-ufolib2 python3.11-dev shiboken2
   tk8.6-blt2.5 unicode-data zlib1g-dev
+
+https://docs.ifcopenshell.org/ifcopenshell-python/installation.html
+
+#Lyrics
+https://www.linux-magazine.com/Issues/2021/246/Waxing-Lyrical
+https://www.makeuseof.com/fix-pip-error-externally-managed-environment-linux/
+
+#nemo nef thumbnails
+In /usr/share/thumbnailers/gdk-pixbuf-thumbnailer.thumbnailer
+add image/x-nef;image/x-nikon-nef;
+
+
+https://asus-linux.org/manual/asusctl-manual/
+
+#Bind manually Photos on another drive
+sudo bindfs /media/philippe/Elements/Philippe/Documents/Pictures/Photos /media/Photos
+sudo bindfs /media/philippe/ssd01/Documents/Pictures/Photos /media/Photos
+
+#convert heic to jpg (imagemagic)
+convert IMG_0504.HEIC IMG_0504.jpg
+
+#folder crypting (file by file)
+#init
+gocryptfs -init ~/.sekrit_files
+#mount decyphed folder
+gocryptfs ~/.sekrit_files ~/my_files
+#umount decyphed folder
+fusermount -u ~/my_files
+
+
+#Battery life
+Install tlp
+
+#music no resampling
+https://www.audiokarma.org/forums/index.php?threads/stop-resampling-under-linux.575308/#google_vignette
+
 

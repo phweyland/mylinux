@@ -15,7 +15,7 @@ $ dispread -v -N -H -y l -k samsung_D65_100_20211213.cal samsung_D65_100_2021121
 $ colprof -v -q h -a G -n c samsung_D65_100_20211213
 
 # to be compatible with vkdt:  -aG
-https://encrypted.pcode.nl/blog/index.html%3Fp=983.html
+/opt/vkdt/vkdt.AppImage read-icc ~/AsusRog_D65_max_20240410.icc
 
 
 /usr/share/color
