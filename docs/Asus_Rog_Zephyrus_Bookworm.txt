@@ -53,6 +53,7 @@ ALTGR ^ + o ou ALTGR é + o => õõ
 
 kernel >= 6.6 for speakers
 https://fostips.com/upgrade-kernel-debian-bookworm/
+https://medium.com/@rafavg77/fix-asus-rog-strix-g16-without-audio-in-ubuntu-23-10-e3e616fc9f5c
 
 https://fostips.com/install-kdenlive-audacity-debian-12/
 
@@ -130,6 +131,7 @@ sudo bindfs /media/philippe/ssd01/Documents/Pictures/Photos /media/Photos
 
 #convert heic to jpg (imagemagic)
 convert IMG_0504.HEIC IMG_0504.jpg
+for file in *.HEIC; do convert "$file" "${file/%HEIC/jpg}"; done
 
 #folder crypting (file by file)
 #init
@@ -141,9 +143,52 @@ fusermount -u ~/my_files
 
 
 #Battery life
-Install tlp
+Install tlp  # doesn't work on asus zenbook =>
+https://ubuntuhandbook.org/index.php/2024/02/limit-battery-charge-ubuntu/
+ls /sys/class/power_supply/BAT0 ...
 
 #music no resampling
 https://www.audiokarma.org/forums/index.php?threads/stop-resampling-under-linux.575308/#google_vignette
+https://forum.manjaro.org/t/howto-set-up-a-hi-res-audiophile-usb-dac-cambridge-audio/80724
+https://www.reddit.com/r/qobuz/comments/10tlrpm/guide_bitperfect_setup_for_qobuz_through_web/
+https://discovery.endeavouros.com/audio/audiophile/2022/01/
+
+Strawberry works without resampling with Audio output set as:
+Output to a sound card via ALSA
+Mojo, USB Audio IEC958 (S/PDIF) Digital Audio Output
+iec958:CARD=Mojo,DEV=0
+
+#music airplay
+Program (client) > Pulseaudio / Pipewire (server) > ALSA (driver) > Audio Card > Connected Speaker
+=>
+Program (client) > Pulseaudio / Pipewire (server) > RAOP (driver) > Airplay Speaker
+
+In /etc/pipewire/pipewire.conf.d/raop-discover.conf (or ~/.config/pipewire/pipewire.conf.d/raop-discover.conf)
+
+context.modules = [
+   {
+       name = libpipewire-module-raop-discover
+       args = { }
+   }
+]
+
+
+#dropbox
+https://fostips.com/install-dropbox-debian/
+https://github.com/kwalker99/nemo-dropbox
+Install nemo-dropbox
+Launch dropbox for dropbox installation
+
+# battery settings
+https://forums.linuxmint.com/viewtopic.php?t=283800
+Use "dconf-editor", 
+When installed, select step by step the following path in "dconf-editor":
+1 org / 2 cinnamon / 3 settings-daemon / 4 plugins / 5 power ( You can BOOKMARK this specific editor page in the upper right corner, so next time you open conf-editor it will automatically open the page for the powermanagement options and you dont have to plough through 5 steps everytime).
+
+Zenmap (nmap GUI)
+https://sempreupdate.com.br/linux/como-instalar-o-gui-zenmap-no-linux/
+ command:
+flatpak run org.nmap.Zenmap
+
 
 
